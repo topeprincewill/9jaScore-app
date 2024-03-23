@@ -8,7 +8,8 @@ import {BrowserRouter, Routes, Route} from 'react-router-dom'
 import LoginPage from './pages/LoginPage'
 import SignUpPage from './pages/SignUpPage'
 import Mainpage from './pages/Mainpage';
-
+import column1 from './pages/maindashboard/column1';
+import TeamsData from './pages/maindashboard/Teamspage';
 
 
 
@@ -32,6 +33,7 @@ const darkTheme = createTheme({
         <Route path="/" element={<Mainpage darkMode={darkMode} setDarkMode={setDarkMode}/>}/>
         <Route path="/login" element={<LoginPage />} />
         <Route path="/signup" element={<SignUpPage />} />
+      
       </Routes>
       
       

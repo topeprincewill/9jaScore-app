@@ -1,6 +1,6 @@
 import requests
 
-url = "https://v3.football.api-sports.io/teams"
+url = "https://v3.football.api-sports.io/teams?id=33"
 
 headers = {
     'x-rapidapi-host': "v3.football.api-sports.io",
@@ -12,5 +12,6 @@ response = requests.get(url, headers=headers)
 data = response.json()
 
 print(data)
+
 
 

@@ -1,8 +1,11 @@
 import React, { useState, useEffect } from 'react';
+import KeyboardArrowLeftIcon from '@mui/icons-material/KeyboardArrowLeft';
+import { useTheme } from '@mui/material/styles';
 
-function FootballData() {
+function CountriesData({ limit,  onNavigateBack }) {
   const [countries, setCountries] = useState([]);
-
+  const theme = useTheme();
+  
   useEffect(() => {
     const fetchData = async () => {
       try {
@@ -18,6 +21,7 @@ function FootballData() {
         }
 
         const responseData = await response.json();
+        console.log(responseData.response);
         setCountries(responseData.response.slice(0, 25));
       } catch (error) {
         console.error('Error fetching data:', error);
@@ -25,43 +29,60 @@ function FootballData() {
     };
 
     fetchData();
-  }, []);
+  }, [ limit ]);
 
   return (
-    <div >
-      <h4 style={{
-          marginTop: '15px',
-          marginBottom: '15px', 
-          textAlign: 'left',
-          border: '1px solid rgba(0, 0, 0, 0.1)',
-          backgroundColor: 'transparent',
-          padding: '5px',
-          borderRadius: '5px',
-          width: '80%',
-          marginLeft: '13px'
-          }}>Countries</h4>
-      <ul style={{ listStyle: 'none', padding: 0}}>
-        {countries.map(country => (
-          <li key={country.code} style={{
-          marginBottom: '15px', 
-          display: 'flex', 
-          alignItems: 'center',
-          border: '1px solid rgba(0, 0, 0, 0.1)',
-          backgroundColor: '#2b2b2b',
-          padding: '5px',
-          borderRadius: '5px',
-          width: '80%',
-          margin: '0 auto',
-          }}
->
-            
-            <img src={country.flag} alt={country.name} style={{ maxWidth: '20px', marginLeft: '10px' }} />
-            <span style={{ marginLeft: '5px' }}>{country.name}</span>
-          </li>
-        ))}
-      </ul>
+    <div>
+    <div style={{display: 'flex'}}>
+      <KeyboardArrowLeftIcon style={{ marginRight: '1px',
+    marginTop: '20px',
+    marginBottom: '15px'}}
+    onClick={onNavigateBack}
+     />
+    <h4
+      style={{
+        marginTop: '15px',
+        marginBottom: '15px',
+        textAlign: 'left',
+        border: '1px solid rgba(0, 0, 0, 0.1)',
+        backgroundColor: 'transparent',
+        padding: '5px',
+        borderRadius: '5px',
+        width: '80%',
+        marginLeft: '5px',
+        cursor: 'pointer',
+        
+      }}
+    >
+      
+      Countries
+    </h4>
     </div>
+    <div>
+    <ul style={{ listStyle: 'none', padding: 0 }}>
+      {countries.map(country => (
+        <li
+          key={country.code}
+          style={{
+            marginBottom: '20px',
+            display: 'flex',
+            alignItems: 'center',
+            border: '1px solid rgba(0, 0, 0, 0.1)',
+            backgroundColor: theme.palette.mode === 'dark' ? '#2b2b2b' : '#ffffff',
+            padding: '5px',
+            borderRadius: '5px',
+            width: '80%',
+            margin: '0 auto',
+          }}
+        >
+          <img src={country.flag} alt={country.name} style={{ maxWidth: '20px', marginLeft: '10px' }} />
+          <span style={{ marginLeft: '5px' }}>{country.name}</span>
+        </li>
+      ))}
+    </ul>
+  </div>
+  </div>
   );
 }
 
-export default FootballData;
+export default CountriesData;

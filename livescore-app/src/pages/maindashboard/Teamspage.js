@@ -1,12 +1,15 @@
 import React, { useState, useEffect } from 'react';
+import KeyboardArrowLeftIcon from '@mui/icons-material/KeyboardArrowLeft';
+import { useTheme } from '@mui/material/styles';
 
-function TeamsData() {
+function TeamsData({ limit,  onNavigateBack }) {
   const [teams, setTeams] = useState([]);
+  const theme = useTheme();
 
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await fetch('https://v3.football.api-sports.io/teams', {
+        const response = await fetch('https://v3.football.api-sports.io/teams?league=39&season=2021', {
           headers: {
             'x-rapidapi-host': 'v3.football.api-sports.io',
             'x-rapidapi-key': 'e97ca1780bd4e9c6fb7a7cb50d086b3a',
@@ -18,6 +21,8 @@ function TeamsData() {
         }
 
         const responseData = await response.json();
+        console.log('API Response:', responseData); // Log the entire response
+      console.log('Teams Data:', responseData.response);
         setTeams(responseData.response.slice(0, 25));
       } catch (error) {
         console.error('Error fetching data:', error);
@@ -25,10 +30,15 @@ function TeamsData() {
     };
 
     fetchData();
-  }, []);
+  },  [limit]);
 
   return (
-    <div >
+    <div>
+    <div style={{display: 'flex'}}>
+    <KeyboardArrowLeftIcon style={{ marginRight: '1px',
+    marginTop: '20px',
+    marginBottom: '15px'}}
+    onClick={onNavigateBack} />
       <h4 style={{
           marginTop: '15px',
           marginBottom: '15px', 
@@ -38,8 +48,13 @@ function TeamsData() {
           padding: '5px',
           borderRadius: '5px',
           width: '80%',
-          marginLeft: '13px'
-          }}>Teams</h4>
+          marginLeft: '5px'
+          }}>
+            Teams
+            </h4>
+          </div>
+
+          <div>
       <ul style={{ listStyle: 'none', padding: 0}}>
         {teams.map(team => (
           <li key={team.team.id} style={{
@@ -47,7 +62,7 @@ function TeamsData() {
           display: 'flex', 
           alignItems: 'center',
           border: '1px solid rgba(0, 0, 0, 0.1)',
-          backgroundColor: '#2b2b2b',
+          backgroundColor: theme.palette.mode === 'dark' ? '#2b2b2b' : '#ffffff',
           padding: '5px',
           borderRadius: '5px',
           width: '80%',
@@ -60,6 +75,7 @@ function TeamsData() {
           </li>
         ))}
       </ul>
+    </div>
     </div>
   );
 }
