@@ -4,6 +4,12 @@ import { buttonClasses } from '@mui/base/Button';
 import { Tabs } from '@mui/base/Tabs';
 import { Tab as BaseTab, tabClasses } from '@mui/base/Tab';
 import { TabsList as BaseTabsList } from '@mui/base/TabsList';
+import premlogo from '../pages/Premier League/premlogo.png'
+import laliga from '../pages/La Liga/laliga.png'
+import champsleague from '../pages/Champions League/champsleague.png'
+import { Link } from 'react-router-dom';
+
+
 
 export default function KeyboardNavigation() {
   return (
@@ -11,12 +17,21 @@ export default function KeyboardNavigation() {
       <Tabs
         defaultValue={1}
         aria-label="Tabs where selection follows focus"
+        
         selectionFollowsFocus
+        
       >
         <TabsList>
-          <Tab value={1}>Football</Tab>
-          <Tab value={2}>Basket</Tab>
-          <Tab value={3}>Soccer</Tab>
+          <Tab value={1}>
+            <Link to = "PremierLeague"> <img src={premlogo} alt="Premier League Logo" style={{ background: '', width: "35%", color: "" }} /><br></br></Link>
+          </Tab>
+          
+          <Tab value={2}>
+            <img src = {laliga} alt = "LaLiga" style = {{width: "30%"}} ></img>
+            </Tab>
+          <Tab value={3}>
+            <img src = {champsleague} alt = "Champions League" style = {{width: "25%"}}></img>
+            </Tab>
         </TabsList>
       </Tabs>
 

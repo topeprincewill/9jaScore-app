@@ -10,6 +10,7 @@ import KeyboardArrowRightIcon from '@mui/icons-material/KeyboardArrowRight'
 const Column1 = ({ showCountriesPage, setShowCountriesPage }) => {
   const [showTeamsPage, setShowTeamsPage] = useState(false);
   const [showCountries, setShowCountries] = useState(false);
+  const [showLeagues, setShowLeagues] = useState(false);
 
   const handleNavigateBack = () => {
     setShowTeamsPage(false); // Set showTeamsPage to false to go back to the original page
@@ -17,6 +18,9 @@ const Column1 = ({ showCountriesPage, setShowCountriesPage }) => {
 
   const handleNavigateBackk = () => {
     setShowCountries(false); // Set showCountriesPage to false to go back to the original page
+  };
+  const handleNavigateBackkk = () => {
+    setShowLeagues(false); // Set showCountriesPage to false to go back to the original page
   };
 
 
@@ -77,6 +81,30 @@ const Column1 = ({ showCountriesPage, setShowCountriesPage }) => {
             <KeyboardArrowRightIcon
               style={{ marginLeft: '1px', marginTop: '20px', marginBottom: '15px' }}
               onClick={() => setShowTeamsPage(true)}
+            />
+          </div>
+
+          <div style={{ display: 'flex' }}>
+            <h4
+              style={{
+                marginTop: '15px',
+                marginBottom: '15px',
+                textAlign: 'left',
+                border: '1px solid rgba(0, 0, 0, 0.1)',
+                backgroundColor: 'transparent',
+                padding: '5px',
+                borderRadius: '5px',
+                width: '80%',
+                marginLeft: '5px',
+                cursor: 'pointer',
+              }}
+              onClick={() => setShowLeagues(true)}
+            >
+              Leagues
+            </h4>
+            <KeyboardArrowRightIcon
+              style={{ marginLeft: '1px', marginTop: '20px', marginBottom: '15px' }}
+              onClick={() => setShowLeagues(true)}
             />
           </div>
         </div>
