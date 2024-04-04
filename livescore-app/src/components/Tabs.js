@@ -1,41 +1,60 @@
 import * as React from 'react';
+import { useState, useEffect } from 'react';
 import { styled } from '@mui/system';
 import { buttonClasses } from '@mui/base/Button';
 import { Tabs } from '@mui/base/Tabs';
 import { Tab as BaseTab, tabClasses } from '@mui/base/Tab';
 import { TabsList as BaseTabsList } from '@mui/base/TabsList';
-import premlogo from '../pages/Premier League/premlogo.png'
-import laliga from '../pages/La Liga/laliga.png'
-import champsleague from '../pages/Champions League/champsleague.png'
-import { Link } from 'react-router-dom';
-
-
+import premlogo1 from '../pages/Premier League/premlogo1.png';
+import laliga from '../pages/La Liga/laliga.png';
+import champsleague from '../pages/Champions League/champsleague.png';
+import { Link, useLocation } from 'react-router-dom';
 
 export default function KeyboardNavigation() {
+  const [value, setValue] = useState(0);
+  const location = useLocation();
+
+  useEffect(() => {
+    const path = location.pathname;
+    if (path === '/PremierLeague') {
+      setValue(1);
+    } else if (path === '/LaLiga') {
+      setValue(2);
+    } else if (path === '/ChampionsLeague') {
+      setValue(3);
+    }
+  }, [location.pathname]);
+
+  const handleChange = (newValue) => {
+    setValue(newValue);
+  };
+
   return (
     <div>
       <Tabs
-        defaultValue={1}
-        aria-label="Tabs where selection follows focus"
-        
-        selectionFollowsFocus
-        
-      >
-        <TabsList>
-          <Tab value={1}>
-            <Link to = "PremierLeague"> <img src={premlogo} alt="Premier League Logo" style={{ background: '', width: "35%", color: "" }} /><br></br></Link>
-          </Tab>
-          
-          <Tab value={2}>
-            <img src = {laliga} alt = "LaLiga" style = {{width: "30%"}} ></img>
-            </Tab>
-          <Tab value={3}>
-            <img src = {champsleague} alt = "Champions League" style = {{width: "25%"}}></img>
-            </Tab>
-        </TabsList>
+       value={value}
+       onChange={(_, newValue) => handleChange(newValue)}
+       aria-label="Tabs where selection follows focus"
+       selectionFollowsFocus
+     >
+       <TabsList>
+         <Tab value={1} style = {{borderRadius: "150px", width: "160vh"}}> 
+           <Link to="/PremierLeague">
+             <img src={premlogo1} alt="Premier League Logo" style={{ width: '30%' }} />
+           </Link>
+         </Tab>
+         <Tab value={2} style = {{borderRadius: "150px", width: "160vh"}}>
+           <Link to="/LaLiga">
+             <img src={laliga} alt="La Liga" style={{ width: '30%' }} />
+           </Link>
+         </Tab>
+         <Tab value={3} style = {{borderRadius: "150px", width: "160vh"}}>
+           <Link to="/ChampionsLeague">
+             <img src={champsleague} alt="Champions League" style={{ width: '25%' }} />
+           </Link>
+         </Tab>
+       </TabsList>
       </Tabs>
-
-     
     </div>
   );
 }

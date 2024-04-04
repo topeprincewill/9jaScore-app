@@ -17,6 +17,9 @@ import axios from 'axios';
 import { useTheme } from '@mui/material/styles';
 import { useNavigate } from "react-router-dom";
 import SportsSoccerIcon from '@mui/icons-material/SportsSoccer';
+import loginPagePic from '../pages/loginPagePic.png';
+import loginPic from './loginPagePic.png';
+
 
 
 function Copyright(props) {
@@ -69,6 +72,9 @@ export default function SignIn() {
     };
 
   return (
+    
+    <div style={{ display: 'flex', backgroundImage: "linear-gradient(to bottom, #003A75, rgba(193, 193, 193, 0))" }}>
+      <div style={{ flex: 1 , width: "", fontFamily: "Poppins", color: "white"}}>
     <ThemeProvider theme={theme}>
       <Container component="main" maxWidth="xs">
         <CssBaseline />
@@ -89,13 +95,14 @@ export default function SignIn() {
             onClick={() => navigate("/")}
             paddingBottom="20px"
           >
-            9jaScore
-            <SportsSoccerIcon/>
+            
           </Typography>
-          <Typography component="h1" variant="h5">
-            Sign in
+          <h1 style={{fontFamily: "Poppins"}}>Hello, Welcome Back!</h1>
+          <Typography component="h1" variant="h5" style = {{fontFamily: "Poppins"}}>
+            Happy to see you again, please sign in
           </Typography>
           <Box component="form" onSubmit={logInUser} noValidate sx={{ mt: 1 }}>
+            
             <TextField
               margin="normal"
               required
@@ -107,7 +114,8 @@ export default function SignIn() {
               name="email"
               autoComplete="email"
               autoFocus
-            />
+            /> 
+
             <TextField
               margin="normal"
               required
@@ -124,7 +132,8 @@ export default function SignIn() {
               control={<Checkbox value="remember" color="primary" />}
               label="Remember me"
             />
-            <Button
+            <br></br>
+            <Button style ={{width: "30%", backgroundColor: "#17497C"}}
               type="submit"
               fullWidth
               variant="contained"
@@ -150,5 +159,17 @@ export default function SignIn() {
         <Copyright sx={{ mt: 8, mb: 4 }} />
       </Container>
     </ThemeProvider>
+    </div>
+    <div style={{ flex: 1 , width: ''}}>
+    <SportsSoccerIcon style = {{marginTop: "10px", marginRight: "-0vh", width : "70px", height: "70px", color: "white"}}/>
+    <img src={loginPic} alt="loginPic" style={{marginTop: '20%', marginRight: '-0vh', width: '100vh', maskImage: 'linear-gradient(to top, transparent, white)', WebkitMaskImage: 'linear-gradient(to bottom, transparent, white)' // For Safari support
+  }}
+/>
+
+
+      
+        
+    </div>
+    </div>
   );
 }

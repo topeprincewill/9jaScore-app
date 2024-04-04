@@ -16,6 +16,7 @@ import axios from 'axios';
 import { useTheme } from '@mui/material/styles';
 import { useNavigate } from 'react-router-dom'
 import SportsSoccerIcon from '@mui/icons-material/SportsSoccer';
+import loginPic from './loginPagePic.png';
 
 function Copyright(props) {
   return (
@@ -67,6 +68,8 @@ export default function SignUp() {
   };
 
   return (
+    <div style={{ display: 'flex', backgroundImage: "linear-gradient(to bottom, #003A75, rgba(193, 193, 193, 0))" }}>
+      <div style={{ flex: 1 , width: "", fontFamily: "Poppins", color: "white"}}>
     <ThemeProvider theme={theme}>
       <Container component="main" maxWidth="xs">  
         <CssBaseline />
@@ -90,8 +93,9 @@ export default function SignUp() {
             9jaScore
             <SportsSoccerIcon/>
           </Typography>
-          <Typography component="h1" variant="h5">
-            Sign up
+          <h1 style={{fontFamily: "Poppins"}}>Hello, Welcome Back!</h1>
+          <Typography component="h1" variant="h5" style = {{fontFamily: "Poppins"}}>
+            Happy to see you, please sign up first
           </Typography>
           <Box component="form" noValidate onSubmit={registerUser} sx={{ mt: 3 }}>
             <Grid container spacing={2}>
@@ -152,7 +156,7 @@ export default function SignUp() {
                 />
               </Grid>
             </Grid>
-            <Button
+            <Button style ={{width: "30%", backgroundColor: "#17497C"}}
               type="submit"
               fullWidth
               variant="contained"
@@ -163,9 +167,9 @@ export default function SignUp() {
             </Button>
             <Grid container justifyContent="flex-end">
               <Grid item>
-                <Link href="/login" variant="body2">
+               <center> <Link href="/login" variant="body2">
                   Already have an account? Sign in
-                </Link>
+                </Link></center>
               </Grid>
             </Grid>
           </Box>
@@ -173,5 +177,13 @@ export default function SignUp() {
         <Copyright sx={{ mt: 5 }} />
       </Container>
     </ThemeProvider>
+    </div>
+    <div style={{ flex: 1 , width: ''}}>
+    <SportsSoccerIcon style = {{marginTop: "10px", marginRight: "-0vh", width : "70px", height: "70px", color: "white"}}/>
+    <img src={loginPic} alt="loginPic" style={{marginTop: '20%', marginRight: '-0vh', width: '100vh', maskImage: 'linear-gradient(to top, transparent, white)', WebkitMaskImage: 'linear-gradient(to bottom, transparent, white)' // For Safari support
+  }}
+/>
+    </div>
+    </div>
   );
 }

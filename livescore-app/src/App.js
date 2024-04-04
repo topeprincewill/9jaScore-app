@@ -11,8 +11,10 @@ import Mainpage from './pages/Mainpage';
 import column1 from './pages/maindashboard/column1';
 import TeamsData from './pages/maindashboard/Teamspage';
 import PremierLeague from './pages/Premier League/PremierLeague';
-
-
+import LaLiga from './pages/La Liga/LaLiga'
+import ChampionsLeague from './pages/Champions League/ChampionsLeague'
+import News from './pages/News/News'
+import Video from './pages/Video/video'
 
 
 function App() {
@@ -35,6 +37,10 @@ const darkTheme = createTheme({
         <Route path="/login" element={<LoginPage />} />
         <Route path="/signup" element={<SignUpPage />} />
         <Route path="/PremierLeague" element={<PremierLeague />} />
+        <Route path = "/LaLiga" element = {<LaLiga/>}/>
+        <Route path = "/ChampionsLeague" element = {<ChampionsLeague/>}/>
+        <Route path = "/News" element = {<News/>}></Route>
+        <Route path = "/Video" element = {<Video/>}></Route>
       </Routes>
       
       

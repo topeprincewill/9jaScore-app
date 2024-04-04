@@ -104,8 +104,10 @@ const Column1 = ({ showCountriesPage, setShowCountriesPage }) => {
             </h4>
             <KeyboardArrowRightIcon
               style={{ marginLeft: '1px', marginTop: '20px', marginBottom: '15px' }}
+            
               onClick={() => setShowLeagues(true)}
             />
+            
           </div>
         </div>
       )}
