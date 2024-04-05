@@ -2,6 +2,8 @@ import { Box, useMediaQuery } from "@mui/material";
 import DashboardBox from "../../components/DashBoardbox";
 import { useTheme, ThemeProvider } from '@mui/material/styles';
 import Column1 from "./column1";
+import Column2 from "./column2";
+import Column3 from "./column3";
 import KeyboardNavigation from "../../components/Tabs";
 
 const gridTemplateLargeScreens = `
@@ -48,8 +50,10 @@ const Maindashboard = () => {
             <DashboardBox  gridArea="a">
                <Column1 />
             </DashboardBox>
-            <DashboardBox  gridArea="b"></DashboardBox>
-            <DashboardBox  gridArea="c"></DashboardBox>
+            <DashboardBox  gridArea="b"><Column2/></DashboardBox>
+            
+            <DashboardBox  gridArea="c"><Column3/></DashboardBox>
+            
         </Box>
         </ThemeProvider>
     );
