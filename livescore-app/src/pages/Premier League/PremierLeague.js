@@ -1,13 +1,16 @@
 import React, { useState, useEffect } from 'react';
 import premlogo from './premlogo.png';
-import premlogo1 from './premlogo1.png'
 import KeyboardNavigation from '../../components/Tabs';
 import ResponsiveAppBar from '../../components/Appbar';
-//import TopTab from '../Tabs';
+import { useDarkMode } from '../../DarkModeContext';
 
 const PremierLeague = ({ darkMode, setDarkMode }) => {
     const [fixtures, setFixtures] = useState([]);
     const [standings, setStandings] = useState([]);
+
+    const { isDarkMode, toggleDarkMode } = useDarkMode();
+
+    
 
     useEffect(() => {
         fetchFixtures();
@@ -70,17 +73,19 @@ const PremierLeague = ({ darkMode, setDarkMode }) => {
     };
 
     return (
-        <div style={{ backgroundImage: "linear-gradient(to bottom, purple, rgba(193, 193, 193, 0))", color: "white" }}>
-            <ResponsiveAppBar check={darkMode} change={()=>setDarkMode(!darkMode)}/>
-            <KeyboardNavigation/>
-            
+        <div style={{background: isDarkMode ? '#222' : '#fff', color: isDarkMode ? '#fff' : '#222', backgroundImage: "linear-gradient(to bottom, purple, rgba(193, 193, 193, 0))", color: "black" }}>
+            <ResponsiveAppBar check={darkMode} change={() => setDarkMode(!darkMode)} />
+            <KeyboardNavigation />
+
             <center><img src={premlogo} alt="Premier League Logo" style={{ background: 'transparent', width: "15%" }} /></center>
             <div style={{ display: 'flex' }}>
-                <div className="Fixtures" style={{ flex: 1 }}>
-                    <center><h1 style={{ fontFamily: "Open Sans", color: "black" }}>Fixtures</h1></center>
+                <div className="Fixtures" style={{ flex: 1, overflowY: 'auto', maxHeight: '500px' }}>
+                    <div style={{ position: 'sticky', top: 0, background: '', zIndex: 1 }}>
+                        <center><h1 style={{ fontFamily: "Open Sans", color: "black" }}>Fixtures</h1></center>
+                    </div>
                     <ul>
                         {fixtures.map((fixture) => (
-                            <div key={fixture.id} style={{ width: "", fontFamily: "Open Sans", backgroundColor: "white", color:"#450335", border: '1px solid black', borderRadius: '20px', marginBottom: '10px', padding: '10px' }}>
+                            <div key={fixture.id} style={{ width: "", fontFamily: "Open Sans", backgroundColor: "white", color: "#450335", border: '1px solid black', borderRadius: '20px', marginBottom: '10px', padding: '10px' }}>
                                 <div>
                                     <center> <h3 style={{ fontSize: '30px' }}>{fixture.home_name} vs {fixture.away_name}</h3></center>
                                     <center><p>Kickoff Time: {fixture.time}</p></center>
@@ -91,8 +96,10 @@ const PremierLeague = ({ darkMode, setDarkMode }) => {
                         ))}
                     </ul>
                 </div>
-                <div className="PremierLeagueStandings" style={{ flex: 1, fontFamily: "Open Sans" }}>
-                    <center><h1 style={{ fontFamily: "Open Sans", color: "black" }}>Standings</h1></center>
+                <div className="PremierLeagueStandings" style={{ flex: 1, overflowY: 'auto', maxHeight: '500px', fontFamily: "Open Sans" }}>
+                    <div style={{ position: 'sticky', top: 0, background: '', zIndex: 1 }}>
+                        <center><h1 style={{ fontFamily: "Open Sans", color: "black" }}>Standings</h1></center>
+                    </div>
                     <table style={{ width: '100%', borderCollapse: 'collapse', textAlign: 'center' }}>
                         <thead>
                             <tr>

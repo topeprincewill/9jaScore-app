@@ -1,10 +1,11 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import ResponsiveAppBar from '../../components/Appbar';
-
+import { useDarkMode } from '../../DarkModeContext';
 
 const News = ({ darkMode, setDarkMode, topNews  }) => {
   const [news, setNews] = useState([]);
+  const { isDarkMode, toggleDarkMode } = useDarkMode();
 
   useEffect(() => {
     const fetchData = async () => {
@@ -12,7 +13,8 @@ const News = ({ darkMode, setDarkMode, topNews  }) => {
       const params = {
         country: 'gb',
         category: 'sports',
-        apiKey: 'caf2234b7c854a4b9bb67d09674e6e29'
+        q: 'football',
+        apiKey: '0c5154167af942c2a26d0760a72e7a91'
       };
 
       try {
@@ -27,7 +29,7 @@ const News = ({ darkMode, setDarkMode, topNews  }) => {
   }, []); // Empty dependency array means this effect runs once after the component mounts
 
   return (
-    <div style={{ backgroundImage: "linear-gradient(to bottom, #363db5,#bf933b, rgba(193, 193, 193,0 )"}}>
+    <div style={{background: isDarkMode ? '#222' : '#fff', color: isDarkMode ? '#fff' : '#222', backgroundImage: "linear-gradient(to bottom, #363db5,#bf933b, rgba(193, 193, 193,0 )"}}>
       <ResponsiveAppBar check={darkMode} change={() => setDarkMode(!darkMode)} />
       
       <h1 style = {{color: "white", fontFamily: "Open Sans"}}>Top Sports News</h1>

@@ -2,10 +2,13 @@ import React, { useState, useEffect } from 'react';
 import laligalogo from './laliga.png';
 import KeyboardNavigation from '../../components/Tabs';
 import ResponsiveAppBar from '../../components/Appbar';
+import { useDarkMode } from '../../DarkModeContext';
 
 const LaLiga = ({ darkMode, setDarkMode }) => {
     const [fixtures, setFixtures] = useState([]);
     const [standings, setStandings] = useState([]);
+
+    const { isDarkMode, toggleDarkMode } = useDarkMode();
 
     useEffect(() => {
         fetchFixtures();
@@ -68,61 +71,65 @@ const LaLiga = ({ darkMode, setDarkMode }) => {
     };
 
     return (
-        <div style={{ backgroundColor: "#a38987" }}>
+        <div style={{background: isDarkMode ? '#222' : '#fff', color: isDarkMode ? '#fff' : '#222', backgroundColor: "#a38987" }}>
             <ResponsiveAppBar check={darkMode} change={() => setDarkMode(!darkMode)} />
             <KeyboardNavigation />
             <center><img src={laligalogo} alt="LaLiga" style={{ width: "20%" }}></img></center>
             <div style={{ display: 'flex' }}>
-            <div className="Fixtures" style={{ fontFamily: "Open Sans", flex: 1 }}>
-                <center><h2>Fixtures</h2></center>
-                <ul>
-                    {fixtures.map((fixture) => (
-                        <div key={fixture.id} style={{ fontFamily: "Open Sans", backgroundColor: "red", border: '1px solid red', borderRadius: '20px', marginBottom: '10px', padding: '10px' }}>
-                            <div>
-                                <center> <h3 style={{ fontSize: '30px' }}>{fixture.home_name} vs {fixture.away_name}</h3></center>
-                                <center><p>Kickoff Time: {fixture.time}</p></center>
-                                <center><p> {fixture.formattedDate}</p></center>
-                                <p style={{ textAlign: 'right' }}>Status: {fixture.status}</p>
+            <div className="Fixtures" style={{ flex: 1, overflowY: 'auto', maxHeight: '500px' }}>
+                    <div style={{ position: 'sticky', top: 0, background: '', zIndex: 1 }}>
+                        <center><h1 style={{ fontFamily: "Open Sans", color: "black" }}>Fixtures</h1></center>
+                    </div>
+                    <ul>
+                        {fixtures.map((fixture) => (
+                            <div key={fixture.id} style={{ fontFamily: "Open Sans", backgroundColor: "#ed3245", border: '1px solid red', borderRadius: '20px', marginBottom: '10px', padding: '10px' }}>
+                                <div>
+                                    <center> <h3 style={{ fontSize: '30px' }}>{fixture.home_name} vs {fixture.away_name}</h3></center>
+                                    <center><p>Kickoff Time: {fixture.time}</p></center>
+                                    <center><p> {fixture.formattedDate}</p></center>
+                                    <p style={{ textAlign: 'right' }}>Status: {fixture.status}</p>
+                                </div>
                             </div>
-                        </div>
-                    ))}
-                </ul>
-                </div>
-            
-            <div className="LaLigaStandings" style={{ fontFamily: "Open Sans", flex: 1 }}>
-                <center><h2>Standings</h2></center>
-                <table style={{ width: '100%', borderCollapse: 'collapse', textAlign: 'center' }}>
-                    <thead>
-                        <tr>
-                            <th>Pos</th>
-                            <th style={{ textAlign: 'left', paddingLeft: '10px' }}>Team</th>
-                            <th>PL</th>
-                            <th>W</th>
-                            <th>GD</th>
-                            <th>PTS</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        {standings.map((team, index) => (
-                            <React.Fragment key={team.team_id}>
-                                <tr>
-                                    <td>{team.rank}</td>
-                                    <td style={{ textAlign: 'left', paddingLeft: '10px' }}>{team.name}</td>
-                                    <td>{team.matches}</td>
-                                    <td>{team.won}</td>
-                                    <td>{team.goal_diff}</td>
-                                    <td>{team.points}</td>
-                                </tr>
-                                {index < standings.length - 1 && (
-                                    <tr style={{ height: '1px', backgroundColor: 'rgba(0, 0, 0, 0.1)' }}>
-                                        <td colSpan="6"></td>
-                                    </tr>
-                                )}
-                            </React.Fragment>
                         ))}
-                    </tbody>
-                </table>
-            </div>
+                    </ul>
+                </div>
+
+                <div className="LaLigaStandings" style={{ flex: 1, overflowY: 'auto', maxHeight: '500px', fontFamily: "Open Sans" }}>
+                    <div style={{ position: 'sticky', top: 0, background: '', zIndex: 1 }}>
+                        <center><h1 style={{ fontFamily: "Open Sans", color: "black" }}>Standings</h1></center>
+                    </div>
+                    <table style={{ width: '100%', borderCollapse: 'collapse', textAlign: 'center' }}>
+                        <thead>
+                            <tr>
+                                <th>Pos</th>
+                                <th style={{ textAlign: 'left', paddingLeft: '10px' }}>Team</th>
+                                <th>PL</th>
+                                <th>W</th>
+                                <th>GD</th>
+                                <th>PTS</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {standings.map((team, index) => (
+                                <React.Fragment key={team.team_id}>
+                                    <tr>
+                                        <td>{team.rank}</td>
+                                        <td style={{ textAlign: 'left', paddingLeft: '10px' }}>{team.name}</td>
+                                        <td>{team.matches}</td>
+                                        <td>{team.won}</td>
+                                        <td>{team.goal_diff}</td>
+                                        <td>{team.points}</td>
+                                    </tr>
+                                    {index < standings.length - 1 && (
+                                        <tr style={{ height: '1px', backgroundColor: 'rgba(0, 0, 0, 0.1)' }}>
+                                            <td colSpan="6"></td>
+                                        </tr>
+                                    )}
+                                </React.Fragment>
+                            ))}
+                        </tbody>
+                    </table>
+                </div>
             </div>
         </div>
     );

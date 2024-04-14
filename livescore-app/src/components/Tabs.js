@@ -31,7 +31,7 @@ export default function KeyboardNavigation() {
 
   return (
     <div>
-      <Tabs
+      <Tabs 
        value={value}
        onChange={(_, newValue) => handleChange(newValue)}
        aria-label="Tabs where selection follows focus"

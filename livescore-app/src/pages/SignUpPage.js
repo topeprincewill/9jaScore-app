@@ -18,20 +18,9 @@ import { useNavigate } from 'react-router-dom'
 import SportsSoccerIcon from '@mui/icons-material/SportsSoccer';
 import loginPic from './loginPagePic.png';
 
-function Copyright(props) {
-  return (
-    <Typography variant="body2" color="text.secondary" align="center" {...props}>
-      {'Copyright © '}
-      <Link color="inherit" href="https://mui.com/">
-        Your Website
-      </Link>{' '}
-      {new Date().getFullYear()}
-      {'.'}
-    </Typography>
-  );
-}
 
-// TODO remove, this demo shouldn't need to reset the theme.
+
+
 
 
 
@@ -174,7 +163,7 @@ export default function SignUp() {
             </Grid>
           </Box>
         </Box>
-        <Copyright sx={{ mt: 5 }} />
+        
       </Container>
     </ThemeProvider>
     </div>

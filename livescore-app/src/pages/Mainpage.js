@@ -4,9 +4,9 @@ import Maindashboard from './maindashboard'
 
 const Mainpage = ({ darkMode, setDarkMode }) => {
   return (
-    <div>
+    <div style = {{padding: '0', margin: '0',}}>
     <ResponsiveAppBar check={darkMode} change={()=>setDarkMode(!darkMode)}/>
-    <div style={{ padding: '80px' }}> {/* Adjust padding as needed */}
+    <div style={{  overflow: 'hidden', padding: '0'}}> {/* Adjust padding as needed */}
         <Maindashboard />
       </div>
     </div>
