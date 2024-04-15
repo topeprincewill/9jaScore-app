@@ -87,8 +87,8 @@ const Column1 = () => {
   };
 
   return (
-    <div style={{background: isDarkMode ? '#222' : '#fff', color: isDarkMode ? '#fff' : '#222', paddingTop: '20px', paddingRight: '0', fontFamily: 'Open Sans' }}>
-      <div style={{ borderBottom: '1px solid white', paddingBottom: '20px' }}>
+    <div style={{background: isDarkMode ? '#222' : '#fff', color: isDarkMode ? '#fff' : '#222', paddingTop: '1vh', paddingRight: '0', fontFamily: 'Open Sans' }}>
+      {/* <div style={{ borderBottom: '1px solid white', paddingBottom: '20px' }}>
         <SearchAppBar
           style={{ width: '100%' }}
           placeholder="Search Players"
@@ -96,8 +96,8 @@ const Column1 = () => {
           onChange={handleSearchInputChange}
           onSubmit={handleSearchSubmit}
         />
-      </div>
-      <h3 style={{ fontFamily: 'Open Sans', textAlign: 'left', padding: '2vh', marginTop: '6.5vh' }}>2023/24 Top Stats</h3>
+      </div> */}
+      <h3 style={{ fontFamily: 'Open Sans', textAlign: 'left', padding: '2vh', marginTop: '3.5vh' }}>2023/24 Top Stats</h3>
       
       <div style={{ display: 'flex', paddingLeft: '0.5vh' }}>
         <div style={{
@@ -108,27 +108,27 @@ const Column1 = () => {
           borderRadius: '10px',
         }}>
           <h5 style={{ marginTop: '1vh' }}>Premier League</h5>
-          <img src={premierLeagueTopScorerImage} alt="Premier League Top Scorer" style={{ height: '15vh', width: 'auto', marginTop: '0.5vh' }} />
-          <h5 style={{ marginTop: '0.5vh' }}>{premierLeagueTopScorer}</h5>
+          <img src={premierLeagueTopScorerImage} alt="Premier League Top Scorer" style={{ height: '12vh', width: 'auto', marginTop: '-1.5vh' }} />
+          <h6 style={{ marginTop: '0.5vh' }}>{premierLeagueTopScorer}</h6>
         </div>
 
         <div style={{ background: 'linear-gradient(to bottom, #3256a8, #f0f0f0)', width: '20vh', height: '25vh', borderRadius: '10px' }}>
           <h5 style={{ marginTop: '1vh' }}>La Liga</h5>
-          <img src={laLigaTopScorerImage} alt="La Liga Top Scorer" style={{ height: '15vh', width: 'auto', marginTop: '0.5vh' }} />
-          <h5 style={{ marginTop: '0.5vh' }}>{laLigaTopScorer}</h5>
+          <img src={laLigaTopScorerImage} alt="La Liga Top Scorer" style={{ height: '12vh', width: 'auto', marginTop: '-1.5vh' }} />
+          <h6 style={{ marginTop: '0.5vh' }}>{laLigaTopScorer}</h6>
         </div>
       </div>
       <div style={{ display: 'flex', paddingLeft: '0.5vh' }}>
         <div style={{ background: 'linear-gradient(to bottom, #3256a8, #f0f0f0)', width: '20vh', height: '25vh', marginRight: '1vh', marginTop: '1vh', borderRadius: '10px' }}>
           <h5 style={{ marginTop: '1vh' }}>Champions League</h5>
-          <img src={championsLeagueTopScorerImage} alt="Champions League Top Scorer" style={{ height: '15vh', width: 'auto', marginTop: '0.5vh' }} />
-          <h5 style={{ marginTop: '0.5vh' }}>{championsLeagueTopScorer}</h5>
+          <img src={championsLeagueTopScorerImage} alt="Champions League Top Scorer" style={{ height: '12vh', width: 'auto', marginTop: '-1.5vh' }} />
+          <h6 style={{ marginTop: '0.5vh' }}>{championsLeagueTopScorer}</h6>
         </div>
         <div style={{ background: 'linear-gradient(to bottom, #3256a8, #f0f0f0)', width: '20vh', height: '25vh', marginTop: '1vh', borderRadius: '10px' }}>
           <h5 style = {{marginTop:'1vh'}}>Top Assists</h5>
-          <h5>Premier League: {premierLeagueTopAssist}</h5>
-          <h5>La Liga: {laLigaTopAssist}</h5>
-          <h5>Champions League: {championsLeagueTopAssist}</h5>
+          <h6 style = {{marginTop: '-3.5vh'}}>Premier League: {premierLeagueTopAssist}</h6>
+          <h6 style = {{marginTop: '-3.5vh'}}>La Liga: {laLigaTopAssist}</h6>
+          <h6 style = {{marginTop: '-3.5vh'}}>Champions League: {championsLeagueTopAssist}</h6>
         </div>
       </div>
 
