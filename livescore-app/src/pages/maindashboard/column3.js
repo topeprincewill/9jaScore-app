@@ -14,7 +14,7 @@ const Column3 = ({ darkMode, setDarkMode }) => {
       const params = {
         country: 'gb',
         category: 'sports',
-        q: 'football',
+        // q: 'football',
         apiKey: 'caf2234b7c854a4b9bb67d09674e6e29'
       };
 

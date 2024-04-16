@@ -52,7 +52,7 @@ const Maindashboard = () => {
             }}
         >
             
-            <DashboardBox  gridArea="a" style = {{height: '80vh'}} >
+            <DashboardBox  gridArea="a" style = {{height: '80vh', borderRadius: '2vh', border: 'black' }} >
                <Column1  />
             </DashboardBox>
             <DashboardBox  gridArea="b" ><Column2/></DashboardBox>

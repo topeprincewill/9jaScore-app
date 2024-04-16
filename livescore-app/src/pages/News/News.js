@@ -13,7 +13,7 @@ const News = ({ darkMode, setDarkMode, topNews  }) => {
       const params = {
         country: 'gb',
         category: 'sports',
-        q: 'football',
+        // q: 'football',
         apiKey: '0c5154167af942c2a26d0760a72e7a91'
       };
 

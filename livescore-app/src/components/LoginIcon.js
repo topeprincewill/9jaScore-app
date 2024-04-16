@@ -17,7 +17,7 @@ export default function LoginIcon() {
   };
 
   return (
-    <div>
+    <div id = "LoginButton">
       <IconButton
         size="large"
         aria-label="login"

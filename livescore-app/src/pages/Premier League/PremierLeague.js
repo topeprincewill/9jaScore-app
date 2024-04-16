@@ -73,7 +73,7 @@ const PremierLeague = ({ darkMode, setDarkMode }) => {
     };
 
     return (
-        <div style={{background: isDarkMode ? '#222' : '#fff', color: isDarkMode ? '#fff' : '#222', backgroundImage: "linear-gradient(to bottom, purple, rgba(193, 193, 193, 0))", color: "black" }}>
+        <div id = "PremierLeague" style={{background: isDarkMode ? '#222' : '#fff', color: isDarkMode ? '#fff' : '#222', backgroundImage: "linear-gradient(to bottom, purple, rgba(193, 193, 193, 0))", color: "black" }}>
             <ResponsiveAppBar check={darkMode} change={() => setDarkMode(!darkMode)} />
             <KeyboardNavigation />
 

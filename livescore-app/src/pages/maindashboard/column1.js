@@ -87,7 +87,7 @@ const Column1 = () => {
   };
 
   return (
-    <div style={{background: isDarkMode ? '#222' : '#fff', color: isDarkMode ? '#fff' : '#222', paddingTop: '1vh', paddingRight: '0', fontFamily: 'Open Sans' }}>
+    <div style={{minHeight: '100vh',background: isDarkMode ? '#222' : '#fff', color: isDarkMode ? '#fff' : '#222', paddingTop: '1vh', paddingRight: '0', fontFamily: 'Open Sans', borderRadius: '2vh', border: 'black' }}>
       {/* <div style={{ borderBottom: '1px solid white', paddingBottom: '20px' }}>
         <SearchAppBar
           style={{ width: '100%' }}
